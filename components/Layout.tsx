@@ -5,6 +5,18 @@ type Props = {
   children?: React.ReactNode;
 };
 
+function Layout({ children }: Props) {
+  return (
+    <div>
+      <GlobalStyles />
+      <Header />
+      <InnerStyles>{children}</InnerStyles>
+    </div>
+  );
+}
+
+export default Layout;
+
 const GlobalStyles = createGlobalStyle`
   html {
     --red: #ff0000;
@@ -46,14 +58,3 @@ const InnerStyles = styled.div`
   margin: 0 auto;
   padding: 2rem;
 `;
-
-function Layout({ children }: Props) {
-  return (
-    <div>
-      <GlobalStyles />
-      <Header />
-      <InnerStyles>{children}</InnerStyles>
-    </div>
-  );
-}
-export default Layout;
