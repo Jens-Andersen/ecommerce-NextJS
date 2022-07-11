@@ -1,5 +1,5 @@
 import { list } from '@keystone-6/core';
-import { select, text } from '@keystone-6/core/fields';
+import { integer, select, text } from '@keystone-6/core/fields';
 
 export const Product = list({
   // access
@@ -12,11 +12,17 @@ export const Product = list({
     }),
     status: select({
       options: [
-        { value: 'available', label: 'AVAILABLE' },
-        { value: 'unavailable', label: 'UNAVAILABLE' },
-        { value: 'draft', label: 'DRAFT' },
+        { label: 'Available', value: 'AVAILABLE' },
+        { label: 'Unavailable', value: 'UNAVAILABLE' },
+        { label: 'Draft', value: 'DRAFT' },
       ],
       defaultValue: 'DRAFT',
+      ui: {
+        displayMode: 'segmented-control',
+        createView: { fieldMode: 'hidden' },
+      },
     }),
+    price: integer(), // integer and _NOT_ a float, because we want to store the price in "øre" (100øre = 1kr) to avoid rounding errors and things like that
+    // TODO: add images
   },
 });

@@ -31,4 +31,5 @@ model Product {
   name        String  @default("")
   description String  @default("")
   status      String? @default("DRAFT")
+  price       Int?
 }

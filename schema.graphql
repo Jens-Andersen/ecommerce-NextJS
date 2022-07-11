@@ -144,6 +144,7 @@ type Product {
   name: String
   description: String
   status: String
+  price: Int
 }
 
 input ProductWhereUniqueInput {
@@ -158,6 +159,7 @@ input ProductWhereInput {
   name: StringFilter
   description: StringFilter
   status: StringNullableFilter
+  price: IntNullableFilter
 }
 
 input StringNullableFilter {
@@ -188,17 +190,30 @@ input NestedStringNullableFilter {
   not: NestedStringNullableFilter
 }
 
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: IntNullableFilter
+}
+
 input ProductOrderByInput {
   id: OrderDirection
   name: OrderDirection
   description: OrderDirection
   status: OrderDirection
+  price: OrderDirection
 }
 
 input ProductUpdateInput {
   name: String
   description: String
   status: String
+  price: Int
 }
 
 input ProductUpdateArgs {
@@ -210,6 +225,7 @@ input ProductCreateInput {
   name: String
   description: String
   status: String
+  price: Int
 }
 
 """
