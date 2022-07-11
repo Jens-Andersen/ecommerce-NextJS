@@ -22,7 +22,7 @@ export const Product = list({
         createView: { fieldMode: 'hidden' },
       },
     }),
-    price: integer(), // integer and _NOT_ a float, because we want to store the price in "øre" (100øre = 1kr) to avoid rounding errors and things like that
+    price: integer(), // integer and _NOT_ a float, because we want to store the price in "øre" (100ØRE = 1kr) to avoid rounding errors and things like that
     // TODO: add images
   },
 });
