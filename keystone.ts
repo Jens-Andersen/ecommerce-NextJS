@@ -7,6 +7,7 @@ import { text } from '@keystone-6/core/fields';
 import { statelessSessions } from '@keystone-6/core/session';
 import 'dotenv/config';
 import { Product } from './schemas/Product';
+import { ProductImage } from './schemas/ProductImage';
 import { User } from './schemas/User';
 
 
@@ -47,6 +48,7 @@ export default withAuth(
       Post,
       User,
       Product,
+      ProductImage,
     },
     ui: {
       isAccessAllowed: ({ session }) => {
