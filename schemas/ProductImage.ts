@@ -24,4 +24,9 @@ export const ProductImage = list({
 		altText: text(),
 		product: relationship({ ref: 'Product.image' }),
 	},
+	ui: {
+		listView: {
+			initialColumns: ['image', 'altText', 'product'],
+		},
+	},
 });
