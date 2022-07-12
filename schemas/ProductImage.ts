@@ -22,7 +22,7 @@ export const ProductImage = list({
 			},
 		}),
 		altText: text(),
-		product: relationship({ ref: 'Product.image' }),
+		product: relationship({ ref: 'Product.image', many: true }),
 	},
 	ui: {
 		listView: {

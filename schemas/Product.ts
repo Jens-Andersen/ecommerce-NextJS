@@ -12,6 +12,7 @@ export const Product = list({
 		}),
 		image: relationship({
 			ref: 'ProductImage.product',
+			many: true,
 			ui: {
 				displayMode: 'cards',
 				cardFields: ['image', 'altText'],
