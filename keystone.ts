@@ -9,20 +9,12 @@ import 'dotenv/config';
 import { Product } from './schemas/Product';
 import { User } from './schemas/User';
 
-function setCookie() {
-  let secret = 'The secret sauce which is definitely 32 characters long';
-
-  if (process.env.COOKIE_SECRET) {
-    console.log('Cookie secret: ', process.env.COOKIE_SECRET);
-    secret = process.env.COOKIE_SECRET;
-  }
-
-  return secret;
-}
 
 const sessionConfig = statelessSessions({
   maxAge: 1000 * 60 * 60 * 24 * 360, // How long they are signed in (1 year)
-  secret: setCookie(), // Secret used to sign the session ID cookie
+  secret:
+    process.env.COOKIE_SECRET ||
+    'The secret sauce which can be absolutely anything as long as it is definitely 32 characters long', // Secret used to sign the session ID cookie
 });
 
 const Post: Lists.Post = list({
@@ -58,7 +50,7 @@ export default withAuth(
     },
     ui: {
       isAccessAllowed: ({ session }) => {
-        console.log('isAccessAllowed: ', session);
+        // console.log('isAccessAllowed: ', session);
         return session?.data;
       },
     },
