@@ -42,6 +42,8 @@ export async function insertSeedData({ prisma }: KeystoneContext) {
 
 		const existingPhoto = await prisma.productImage.findMany({
 			where: {
+        // would be nice to be able to search for _id_ inside the image column, but search in text is only available for postgres and MySQL atm.
+        // this works for now, but not that resistent
 				altText: product.description,
 			},
 		});
