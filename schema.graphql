@@ -143,7 +143,13 @@ type Product {
   id: ID!
   name: String
   description: String
-  image: ProductImage
+  photo(
+    where: ProductImageWhereInput! = {}
+    orderBy: [ProductImageOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [ProductImage!]
+  photoCount(where: ProductImageWhereInput! = {}): Int
   status: String
   price: Int
 }
@@ -159,9 +165,15 @@ input ProductWhereInput {
   id: IDFilter
   name: StringFilter
   description: StringFilter
-  image: ProductImageWhereInput
+  photo: ProductImageManyRelationFilter
   status: StringNullableFilter
   price: IntNullableFilter
+}
+
+input ProductImageManyRelationFilter {
+  every: ProductImageWhereInput
+  some: ProductImageWhereInput
+  none: ProductImageWhereInput
 }
 
 input StringNullableFilter {
@@ -214,15 +226,16 @@ input ProductOrderByInput {
 input ProductUpdateInput {
   name: String
   description: String
-  image: ProductImageRelateToOneForUpdateInput
+  photo: ProductImageRelateToManyForUpdateInput
   status: String
   price: Int
 }
 
-input ProductImageRelateToOneForUpdateInput {
-  create: ProductImageCreateInput
-  connect: ProductImageWhereUniqueInput
-  disconnect: Boolean
+input ProductImageRelateToManyForUpdateInput {
+  disconnect: [ProductImageWhereUniqueInput!]
+  set: [ProductImageWhereUniqueInput!]
+  create: [ProductImageCreateInput!]
+  connect: [ProductImageWhereUniqueInput!]
 }
 
 input ProductUpdateArgs {
@@ -233,21 +246,27 @@ input ProductUpdateArgs {
 input ProductCreateInput {
   name: String
   description: String
-  image: ProductImageRelateToOneForCreateInput
+  photo: ProductImageRelateToManyForCreateInput
   status: String
   price: Int
 }
 
-input ProductImageRelateToOneForCreateInput {
-  create: ProductImageCreateInput
-  connect: ProductImageWhereUniqueInput
+input ProductImageRelateToManyForCreateInput {
+  create: [ProductImageCreateInput!]
+  connect: [ProductImageWhereUniqueInput!]
 }
 
 type ProductImage {
   id: ID!
   image: CloudinaryImage_File
   altText: String
-  product: Product
+  product(
+    where: ProductWhereInput! = {}
+    orderBy: [ProductOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [Product!]
+  productCount(where: ProductWhereInput! = {}): Int
 }
 
 type CloudinaryImage_File {
@@ -309,7 +328,13 @@ input ProductImageWhereInput {
   NOT: [ProductImageWhereInput!]
   id: IDFilter
   altText: StringFilter
-  product: ProductWhereInput
+  product: ProductManyRelationFilter
+}
+
+input ProductManyRelationFilter {
+  every: ProductWhereInput
+  some: ProductWhereInput
+  none: ProductWhereInput
 }
 
 input ProductImageOrderByInput {
@@ -320,7 +345,7 @@ input ProductImageOrderByInput {
 input ProductImageUpdateInput {
   image: Upload
   altText: String
-  product: ProductRelateToOneForUpdateInput
+  product: ProductRelateToManyForUpdateInput
 }
 
 """
@@ -328,10 +353,11 @@ The `Upload` scalar type represents a file upload.
 """
 scalar Upload
 
-input ProductRelateToOneForUpdateInput {
-  create: ProductCreateInput
-  connect: ProductWhereUniqueInput
-  disconnect: Boolean
+input ProductRelateToManyForUpdateInput {
+  disconnect: [ProductWhereUniqueInput!]
+  set: [ProductWhereUniqueInput!]
+  create: [ProductCreateInput!]
+  connect: [ProductWhereUniqueInput!]
 }
 
 input ProductImageUpdateArgs {
@@ -342,12 +368,12 @@ input ProductImageUpdateArgs {
 input ProductImageCreateInput {
   image: Upload
   altText: String
-  product: ProductRelateToOneForCreateInput
+  product: ProductRelateToManyForCreateInput
 }
 
-input ProductRelateToOneForCreateInput {
-  create: ProductCreateInput
-  connect: ProductWhereUniqueInput
+input ProductRelateToManyForCreateInput {
+  create: [ProductCreateInput!]
+  connect: [ProductWhereUniqueInput!]
 }
 
 """

@@ -10,7 +10,7 @@ export const Product = list({
 				displayMode: 'textarea',
 			},
 		}),
-		image: relationship({
+		photo: relationship({
 			ref: 'ProductImage.product',
 			many: true,
 			ui: {
