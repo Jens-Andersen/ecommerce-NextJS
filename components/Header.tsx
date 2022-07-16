@@ -35,18 +35,18 @@ const HeaderStyles = styled.header`
 
 function Header(): JSX.Element {
   return (
-    <HeaderStyles>
-      <div className="bar">
-        <LogoStyles>
-          <Link href="/">My Awesome WebShop</Link>
-        </LogoStyles>
-      </div>
-      <div className="sub-bar">
-        <p>Search</p>
-      </div>
-      <Nav />
-    </HeaderStyles>
-  );
+		<HeaderStyles>
+			<div className="bar">
+				<LogoStyles>
+					<Link href="/">Hipster Coffee</Link>
+				</LogoStyles>
+			</div>
+			<div className="sub-bar">
+				<p>Search</p>
+			</div>
+			<Nav />
+		</HeaderStyles>
+	);
 }
 
 export default Header;
