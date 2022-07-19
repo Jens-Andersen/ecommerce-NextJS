@@ -8,3 +8,5 @@ Spicing it up 🤙 We always use relational databases in ecommerce, trying somet
 GraphQL
 
 Learning opportunity
+
+** NB: Need to use "graphql": "^15.8.0", with keystone at the time of this writing
