@@ -13,6 +13,7 @@
     "react/self-closing-comp": ["error"],
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off", // not nedded after react 17
-    "no-undef": "off"
+    "no-undef": "off",
+    "react/prop-types": "off"
   }
 }
