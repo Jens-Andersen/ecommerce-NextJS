@@ -1,6 +1,9 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
+import { Product } from './Product';
+import type { Product as ProductType } from '@prisma/client';
+
 
 const ALL_PRODUCTS_QUERY = gql`
 	query ALL_PRODUCTS_QUERY {
@@ -33,7 +36,7 @@ function Products() {
 	console.log('HEY::: ', data.products[0].name);
 
 	const products = data.products.map((product: any) => {
-		return <p key={product.id}>{product.name}</p>;
+		return <Product key={product.id} product={product} />;
 	});
 
 	return (
