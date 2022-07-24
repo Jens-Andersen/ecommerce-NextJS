@@ -6,7 +6,7 @@ import {
 	NormalizedCacheObject,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-import { concatPagination } from '@apollo/client/utilities';
+// import { concatPagination } from '@apollo/client/utilities';
 import merge from 'deepmerge';
 import isEqual from 'lodash/isEqual';
 import { useMemo } from 'react';
