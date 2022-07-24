@@ -4,7 +4,9 @@
 // } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { formatMoney } from '../lib/formatMoney';
 import ItemStyles from './styles/ItemStyles';
+import PriceTagStyles from './styles/PriceTagStyles';
 import TitleStyles from './styles/TitleStyles';
 
 type ProductProps = {
@@ -32,9 +34,12 @@ export function Product({ product }: Props) {
 				width={500}
 				height={500}
 			/>
+			<PriceTagStyles>{formatMoney(product.price)}</PriceTagStyles>
 			<TitleStyles>
 				<Link href={`/product/${product.id}`}>{product.name}</Link>
 			</TitleStyles>
+			<p>{product.description}</p>
+			{/* TODO: add buttons to add and delete item */}
 		</ItemStyles>
 	);
 }
