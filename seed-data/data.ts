@@ -10,7 +10,7 @@ export const products = [
 		name: 'Bullshit Filter',
 		description: 'soo nice',
 		status: 'AVAILABLE',
-		price: 3423,
+		price: 2500,
 		photo: {
 			id: 'cl5lb4zjp0001gjl6dpte1d5e',
 			filename: 'bullshit-filter.jpeg',
