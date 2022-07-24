@@ -17,7 +17,15 @@ function Layout({ children }: Props) {
 
 export default Layout;
 
+// TODO: find a cool font
 const GlobalStyles = createGlobalStyle`
+  @font-face {
+    font-family: 'radnika_next';
+    src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   html {
     --red: #ff0000;
     --black: #393939;
@@ -29,6 +37,7 @@ const GlobalStyles = createGlobalStyle`
     --maxWidth: 1000px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
     box-sizing: border-box;
+    font-size: 62.5%;
   }
 
 *, *:before, *:after {
