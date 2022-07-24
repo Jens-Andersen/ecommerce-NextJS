@@ -2,8 +2,6 @@ import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 import { Product } from './Product';
-import type { Product as ProductType } from '@prisma/client';
-
 
 const ALL_PRODUCTS_QUERY = gql`
 	query ALL_PRODUCTS_QUERY {
