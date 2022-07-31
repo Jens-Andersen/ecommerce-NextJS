@@ -1,11 +1,12 @@
 import {
 	ApolloClient,
 	from,
-	HttpLink,
 	InMemoryCache,
 	NormalizedCacheObject,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
+import { createUploadLink } from 'apollo-upload-client';
+
 // import { concatPagination } from '@apollo/client/utilities';
 import merge from 'deepmerge';
 import isEqual from 'lodash/isEqual';
@@ -26,7 +27,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 	if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-const httpLink = new HttpLink({
+const httpLink = createUploadLink({
 	uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint, // Server URL (must be absolute)
 	// credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
 	fetchOptions: {
