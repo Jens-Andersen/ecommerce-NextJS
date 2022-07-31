@@ -18,6 +18,7 @@
 		"@keystone-6/core": "^2.0.0",
 		"@types/nprogress": "^0.2.0",
 		"@types/styled-components": "^5.1.25",
+		"apollo-upload-client": "^17.0.0",
 		"deepmerge": "^4.2.2",
 		"dotenv": "^16.0.1",
 		"graphql": "^15.8.0",
